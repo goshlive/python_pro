@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Welcome{% endblock %}
+{% block body %}
+
+<div class="container min-vh-100 d-flex align-items-center justify-content-center">
+  <div class="auth-card card shadow-sm">
+    <div class="card-body p-4">
+      <!-- Title -->
+      <h1 class="h3 text-center mb-4">Bravo Python Pro!</h1>
+
+      <!-- Form Login -->
+      <form id="login-form" method="post" action="{{ url_for('main.login') }}" novalidate>
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          {{ form.username(class="form-control", id="username", placeholder="Masukkan username", autocomplete="username") }}
+          {% for e in form.username.errors %}
+            <div class="text-danger small mt-1">{{ e }}</div>
+          {% endfor %}
+        </div>
+
+        <div class="mb-2">
+          <label for="password" class="form-label">Password</label>
+          {{ form.password(class="form-control", id="password", placeholder="Masukkan password", autocomplete="current-password") }}
+          {% for e in form.password.errors %}
+            <div class="text-danger small mt-1">{{ e }}</div>
+          {% endfor %}
+        </div>
+
+        <div class="d-grid mt-3">
+          {{ form.submit(class="btn btn-primary") }}
+        </div>
+      </form>
+
+      <!-- Link untuk Registerasi / Lupa-password -->
+      <div class="d-flex justify-content-between mt-3 small">
+        <a href="/register">Registerasi Akun</a>
+        <a href="/forgot">Lupa password?</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

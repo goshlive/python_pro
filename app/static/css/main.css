@@ -1,0 +1,17 @@
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 16px;
+}
+
+.divider {
+  border: none;
+  height: 1px;
+  background: #dadce0;
+}
+
+/* membagi bagian ke dalam dua kolom */
+@media (min-width: 768px) {
+  .col-md-4 { flex: 0 0 auto; width: 32%; }
+  .col-md-8 { flex: 0 0 auto; width: 68%; }
+}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Reset Password{% endblock %}
+{% block body %}
+
+<!-- Halaman reset password -->
+<div class="container min-vh-100 d-flex align-items-center justify-content-center">
+  <div class="auth-card card shadow-sm">
+    <div class="card-body p-4">
+      <h1 class="h3 text-center mb-3">Reset Password</h1>
+
+      <form method="post" novalidate>
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+          <label class="form-label" for="username">Username</label>
+          {{ form.username(class="form-control", id="username", placeholder="Username Anda") }}
+          {% for e in form.username.errors %}
+            <div class="text-danger small mt-1">{{ e }}</div>
+          {% endfor %}
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="new_password">Password baru</label>
+          {{ form.new_password(class="form-control", id="new_password", placeholder="Minimal 6 karakter") }}
+          {% for e in form.new_password.errors %}
+            <div class="text-danger small mt-1">{{ e }}</div>
+          {% endfor %}
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="new_password2">Ulangi password</label>
+          {{ form.new_password2(class="form-control", id="new_password2", placeholder="Ketik ulang password") }}
+          {% for e in form.new_password2.errors %}
+            <div class="text-danger small mt-1">{{ e }}</div>
+          {% endfor %}
+        </div>
+
+        <div class="d-grid">
+          {{ form.submit(class="btn btn-primary") }}
+        </div>
+
+        <!-- Link untuk ke Home atau buat akun baru -->
+        <div class="d-flex justify-content-between mt-3 small">
+          <a href="{{ url_for('main.index') }}">Kemabli ke Home</a>
+          <a href="{{ url_for('main.register') }}">Buat akun</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
